@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <!-- Mirrored from pixner.net/paylio/paylio-v2/forgot-password.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Jan 2025 05:25:24 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dauxen bank</title>
+
+    <link rel="shortcut icon" href="img/fav.png" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/plugin/nice-select.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/plugin/slick.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/custom-family.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/plugin/magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/plugin/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style-rtl.min.css' %}" id="rtl-stylesheet" disabled/>
+    
+    
+    <!-- iziToast CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
+
+
+     <!-- izitoast js -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+
+  <body>
+    
+
+  
+
+    <!-- Forgot Password In start -->
+    <section class="log-reg forgot-pws">
+      <div class="overlay pb-120">
+        <div class="container">
+          <div class="top-head-area">
+            <div class="row d-flex align-items-center">
+              <div class="col-sm-5 col">
+                <a class="back-home" href="index.html">
+                  <img src="{% static 'img/left-icon.png' %}" alt="image" />
+                  Back To Home
+                </a>
+              </div>
+              <div class="col-sm-5 col">
+                <a href="index.html">
+                  <img src="{% static 'logo/dxlogose.png' %}" alt="image"  style="width: 10rem;"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+              <div class="form-box">
+                <div class="icon-area">
+                  <img src="{% static 'img/forgot-password-Illus.png' %}" alt="image" />
+                </div>
+                <h4>OTP Verification</h4>
+                <p>
+                  Enter  otp sent to your email  or phone number  to continue
+                </p>
+                <form action="#" method="post" id="verify-form">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="single-input d-flex align-items-center">
+                        <input type="text" placeholder="Enter otp" name="otp_code"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="btn-area">
+                    <button class="cmn-btn" id="btn-verify">
+                      <span id="verify-text">Verify Now</span> 
+                      <span class="spinner-border" style="width: 1rem; height: 1rem; display: none;"></span>
+                  </button>
+                  </div>
+                </form>
+                <p class="back-login dont-acc">
+                  Go back to <a href="{% url 'login' %}">Login</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Forgot Password In end -->
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/proper-min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/fontawesome.js' %}"></script>
+    <script src="{% static 'js/plugin/slick.js' %}"></script>
+    <script src="{% static 'js/plugin/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugin/apexcharts.min.js' %}"></script>
+    <script src="{% static 'js/plugin/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/plugin/jquery.countdown.js' %}"></script>
+    <script src="{% static 'js/plugin/wow.min.js' %}"></script>
+    <script src="{% static 'js/plugin/plugin.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+
+      <!-- here is my custom js -->
+    <script src="{% static 'js/custom-js/verify.js' %}"></script>
+
+
+  </body>
+
+  <!-- Mirrored from pixner.net/paylio/paylio-v2/forgot-password.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Jan 2025 05:25:25 GMT -->
+</html>
