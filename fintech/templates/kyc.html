@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from pixner.net/paylio/paylio-dashboard/account.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Jan 2025 05:24:52 GMT -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      Paylio - Money Transfer and Online Payments Dashboard HTML Template
+    </title>
+
+    <link
+      rel="shortcut icon"
+      href="assets/images/fav.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.css" />
+    <link rel="stylesheet" href="assets/css/plugin/apexcharts.css" />
+    <link rel="stylesheet" href="assets/css/plugin/nice-select.css" />
+    <link rel="stylesheet" href="assets/css/arafat-font.css" />
+    <link rel="stylesheet" href="assets/css/plugin/animate.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+
+
+    <section class="dashboard-section body-collapse account">
+        <div class="overlay pt-120">
+          <div class="container-fruid">
+            <div class="main-content">
+              <div class="row">
+                <div class="col-xxl-3 col-xl-4 col-md-6">
+                  <div class="owner-details">
+                    <div class="profile-area">
+                      <div class="profile-img">
+                        <img src="assets/images/owner-profile.png" alt="image" />
+                      </div>
+                      <div class="name-area">
+                        <h6>Alfred Davis</h6>
+                        <p class="active-status">Active</p>
+                      </div>
+                    </div>
+                    <div class="owner-info">
+                      <ul>
+                        <li>
+                          <p>Account No:</p>
+                          <span class="mdr">2003049000</span>
+                        </li>
+                        <li>
+                          <p>Joined:</p>
+                          <span class="mdr">Aug 25,2021</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-9 col-xl-8">
+                  <div class="tab-main">
+                    <ul class="nav nav-tabs" role="tablist" style="
+                    margin-left: 250px;
+                ">
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link active"
+                          id="account-tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#account"
+                          type="button"
+                          role="tab"
+                          aria-controls="account"
+                          aria-selected="true"
+                        >
+                          KYC VERIFICATION 
+                        </button>
+                      </li>
+                    </ul>
+                    <div class="tab-content mt-40">
+                      <div
+                        class="tab-pane fade show active"
+                        id="account"
+                        role="tabpanel"
+                        aria-labelledby="account-tab"
+                      >
+                        <!-- Profile Picture Upload -->
+                        <div class="upload-avatar">
+                          <div class="avatar-left d-flex align-items-center">
+                            <div class="profile-img">
+                              <img src="assets/images/owner-profile-2.png" alt="image" />
+                            </div>
+                            <div class="instraction">
+                              <h6>Your Avatar</h6>
+                              <p>Profile picture size: 400px x 400px</p>
+                            </div>
+                          </div>
+                          <div class="avatar-right">
+                            <div class="file-upload">
+                              <div class="right-area">
+                                <label class="file">
+                                  <input type="file" name="image" accept="image/*" />
+                                  <span class="file-custom"></span>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+      
+                        <!-- KYC Form -->
+                        <form action="#" method="post" enctype="multipart/form-data">
+                          <div class="row justify-content-center">
+                            <!-- Legal Name -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="legalname">Legal Name</label>
+                                <input
+                                  type="text"
+                                  id="legalname"
+                                  name="legalname"
+                                  placeholder="Enter your legal name"
+                                  required
+                                />
+                              </div>
+                            </div>
+      
+                            <!-- Marital Status -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="marital_status">Marital Status</label>
+                                <select id="marital_status" name="marital_status" required>
+                                  <option value="single">Single</option>
+                                  <option value="married">Married</option>
+                                  <option value="divorced">Divorced</option>
+                                  <option value="widowed">Widowed</option>
+                                </select>
+                              </div>
+                            </div>
+      
+                            <!-- Gender -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender" required>
+                                  <option value="male">Male</option>
+                                  <option value="female">Female</option>
+                                  <option value="other">Other</option>
+                                </select>
+                              </div>
+                            </div>
+      
+                            <!-- Identity Type -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="identity_type">Identity Type</label>
+                                <select id="identity_type" name="identity_type" required>
+                                  <option value="passport">Passport</option>
+                                  <option value="driving_license">Driving License</option>
+                                  <option value="national_id">National ID</option>
+                                </select>
+                              </div>
+                            </div>
+      
+                            <!-- Date of Birth -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="date_of_birth">Date of Birth</label>
+                                <input
+                                  type="date"
+                                  id="date_of_birth"
+                                  name="date_of_birth"
+                                  required
+                                />
+                              </div>
+                            </div>
+      
+                            <!-- Local Government -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="local_govert">Local Government</label>
+                                <input
+                                  type="text"
+                                  id="local_govert"
+                                  name="local_govert"
+                                  placeholder="Enter your local government"
+                                  required
+                                />
+                              </div>
+                            </div>
+      
+                            <!-- Country -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="country">Country</label>
+                                <input
+                                  type="text"
+                                  id="country"
+                                  name="country"
+                                  placeholder="Enter your country"
+                                  required
+                                />
+                              </div>
+                            </div>
+      
+                            <!-- State -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="state">State</label>
+                                <input
+                                  type="text"
+                                  id="state"
+                                  name="state"
+                                  placeholder="Enter your state"
+                                  required
+                                />
+                              </div>
+                            </div>
+      
+                            <!-- City -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="city">City</label>
+                                <input
+                                  type="text"
+                                  id="city"
+                                  name="city"
+                                  placeholder="Enter your city"
+                                  required
+                                />
+                              </div>
+                            </div>
+      
+                            <!-- Mobile -->
+                            <div class="col-md-6">
+                              <div class="single-input">
+                                <label for="mobile">Mobile</label>
+                                <input
+                                  type="text"
+                                  id="mobile"
+                                  name="mobile"
+                                  placeholder="Enter your mobile number"
+                                  required
+                                />
+                              </div>
+                            </div>
+      
+                            <!-- Identity Image Upload -->
+                            <div class="col-md-12">
+                              <div class="single-input file">
+                                <label>Identity Document</label>
+                                <div class="file-upload">
+                                  <div class="right-area">
+                                    <label class="file">
+                                      <input type="file" name="identity_image" accept="image/*" required />
+                                      <span class="file-custom"></span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+      
+                            <!-- Signature Upload -->
+                            <div class="col-md-12">
+                              <div class="single-input file">
+                                <label>Signature</label>
+                                <div class="file-upload">
+                                  <div class="right-area">
+                                    <label class="file">
+                                      <input type="file" name="signature" accept="image/*" required />
+                                      <span class="file-custom"></span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+      
+                            <!-- Submit Button -->
+                            <div class="col-md-12">
+                              <div class="btn-border">
+                                <button type="submit" class="cmn-btn">Submit KYC</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+
+    <!--==================================================================-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-ui.js"></script>
+    <script src="assets/js/plugin/apexcharts.js"></script>
+    <script src="assets/js/plugin/jquery.nice-select.min.js"></script>
+    <script src="assets/js/plugin/waypoint.min.js"></script>
+    <script src="assets/js/plugin/wow.min.js"></script>
+    <script src="assets/js/plugin/plugin.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+
+</html>

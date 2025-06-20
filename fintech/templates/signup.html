@@ -149,6 +149,11 @@
                                         <div class="login-with d-flex align-items-center">
                                             <a href="javascript:void(0)"><img src="{% static 'img/google.png' %}" alt="image"></a>
                                             <a href="javascript:void(0)"><img src="{% static 'img/fb.png' %}" alt="image"></a>
+                                        
+                                            <a href="{% provider_login_url 'google' process='redirect' %}">
+                                                <img src="{% static 'img/google.png' %}" alt="Sign in with Google">
+                                                Sign in with Google
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="privacy">

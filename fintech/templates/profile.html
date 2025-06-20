@@ -4,43 +4,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile - Dauxen Bank</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
 </head>
 <body>
-    <section class="profile-section">
-        <div class="container">
-            <div class="top-head-area d-flex justify-content-between align-items-center">
-                <a class="back-home" href="{% url 'homeview' %}">
-                    <img src="{% static 'img/left-icon.png' %}" alt="Back">
-                    Back To Home
-                </a>
-                <a href="#">
-                    <img src="{% static 'logo/dxlogose.png' %}" alt="Logo" width="150px">
-                </a>
-            </div>
-            
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-8 text-center">
-                    <div class="profile-box">
-                        <img src="{% static 'img/user-avatar.png' %}" alt="User Avatar" class="profile-avatar">
-                        <h4>{{ user.username }}</h4>
-                        <p>Email: {{ user.email }}</p>
-                        <p>Phone: {{ user.phone }}</p>
-                        <p>Country: {{ user.country }}</p>
-                        
-                        <div class="btn-area mt-3">
-                            <a href="#" class="btn btn-primary">Edit Profile</a>
-                            <a href="{% provider_login_url 'google' %}" class="btn btn-danger">Logout</a>
-                        
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="top-section">
+    <div class="d-flex justify-content-between align-items-start">
+      <div class="profile">
+        {% if user.personalaccount.image %}
+          <img src="{{ user.personalaccount.image.url }}" alt="User Avatar" class="profile-avatar">
+        {% else %}
+          <img src="{% static 'img/user-avatar.png' %}" alt="User Avatar" class="profile-avatar">
+        {% endif %}
+  
+        <div class="username px-2">
+          <h3>{{ user.username }}</h3> 
         </div>
-    </section>
+        
+      </div>
 
-    <script src="{% static 'js/bootstrap.min.js' %}
+
+
+      <div class="btn btn-sm text-white" style="background-color: #5732C6;">Edit Profile</div>
+      
+
+    </div>
+      <div>
+        <p class="mb-1 mt-2">Available Balance <i class="fa-solid fa-eye ms-2" id="toggleBalance" style="cursor:pointer;"></i></p>
+        <h3 id="balance">₦{{ account.balance|floatformat:2 }}</h3>
+      </div>
+
+
+  </div>
+
+  <!-- <div class="security-alert">
+    <div>
+      <strong>Security Check is not turned on</strong><br>
+      <small>Make your account more secure with extra safety checks.</small>
+    </div>
+    <button class="btn btn-dark btn-sm">Turn On</button>
+  </div> -->
+
+  <div class="menu-section">
+    <div class="menu-item">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      <div class="menu-text">
+        Transaction History<br>
+        <small>View your past transactions</small>
+      </div>
+      <i class="fa-solid fa-chevron-right menu-chevron"></i>
+    </div>
+    <div class="menu-item">
+      <i class="fa-solid fa-gauge"></i>
+      <div class="menu-text">
+        Account Limits<br>
+        <small>View your transaction limits</small>
+      </div>
+      <i class="fa-solid fa-chevron-right menu-chevron"></i>
+    </div>
+    <div class="menu-item">
+      <i class="fa-solid fa-credit-card"></i>
+      <div class="menu-text">
+        Bank Card/Account<br>
+        <small>Add payment option</small>
+      </div>
+      <i class="fa-solid fa-chevron-right menu-chevron"></i>
+    </div>
+    
+  </div>
+
+  <div class="menu-section">
+    <div class="menu-item">
+      <i class="fa-solid fa-shield-halved"></i>
+      <div class="menu-text">Security Center<br><small>Protect your funds</small></div>
+      <i class="fa-solid fa-chevron-right menu-chevron"></i>
+    </div>
+    <div class="menu-item">
+      <i class="fa-solid fa-headset"></i>
+      <div class="menu-text">Customer Service Center<br><small>Need help?</small></div>
+      <i class="fa-solid fa-chevron-right menu-chevron"></i>
+    </div>
+    <div class="menu-item">
+      <i class="fa-solid fa-party-horn"></i>
+      <div class="menu-text">Invitation<br><small>Invite friends and earn bonus</small></div>
+      <i class="fa-solid fa-chevron-right menu-chevron"></i>
+    </div>
+    
+  </div>
+
+  <div class="bottom-nav">
+    <a href="#"><i class="fa-solid fa-house"></i>Home</a>
+    {% comment %} <a href="#"><i class="fa-solid fa-medal"></i>Rewards</a>
+    <a href="#"><i class="fa-solid fa-wallet"></i>Finance</a>
+    <a href="#"><i class="fa-solid fa-credit-card"></i>Cards</a>
+    <a href="#"><i class="fa-solid fa-user"></i>Me</a> {% endcomment %}
+  </div>
+
+
+  <div style="height: 100px;"></div>
+
+
+  <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

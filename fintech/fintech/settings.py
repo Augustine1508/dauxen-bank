@@ -43,32 +43,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'rest_framework',
+
+    # installed apps for my google authentication
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    # apps for 2Factor Auth
+    "django_otp",
+    "django_otp.plugins.otp_totp",
 ]
 
-SITE_ID = 1
 
-
-
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-with open(os.path.join(BASE_DIR, "client_secret.json")) as f:
-    google_creds = json.load(f)
-
-SOCIALACCOUNT_PROVIDERS = {
-    "google": {
-        "APP": {
-            "client_id": google_creds["web"]["client_id"],
-            "secret": google_creds["web"]["client_secret"],
-            "key": "",
-        }
-    }
-}
 
 
 MIDDLEWARE = [
@@ -79,7 +68,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    #here is my all-auth middleware
     'allauth.account.middleware.AccountMiddleware',
+
+    # middleware for enforcing 2Factor Auth
+    'django_otp.middleware.OTPMiddleware',  
 ]
 
 ROOT_URLCONF = 'fintech.urls'
@@ -126,7 +120,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'dbmain.sqlite3'),  # ✅ Corrected line
+        'NAME': os.path.join(BASE_DIR, 'dbmain.sqlite3'),
     }
 }
 
@@ -255,4 +249,37 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+
+SITE_ID = 1
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+with open(os.path.join(BASE_DIR, "client_secret.json")) as f:
+    google_creds = json.load(f)
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "APP": {
+            "client_id": google_creds["web"]["client_id"],
+            "secret": google_creds["web"]["client_secret"],
+            "key": "",
+        }
+    }
+}
+
+
 LOGIN_REDIRECT_URL = '/profile'  # Redirect to an existing profile page
+
+
+# ACCOUNT_LOGIN_METHODS = {"email"}
+# ACCOUNT_EMAIL_REQUIRED = True
+# SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+
+
+
+

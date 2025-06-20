@@ -54,6 +54,3 @@ class Login(View):
 
 
 
-class ProfileView(View):
-    def get(self, request):
-        return render(request, 'profile.html')

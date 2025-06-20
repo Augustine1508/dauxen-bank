@@ -1,0 +1,179 @@
+{% load static %}
+{% load socialaccount %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ user.username }}</title>
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+</head>
+<body>
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="profile">
+      {% if user.personalaccount.image %}
+        <img src="{{ user.personalaccount.image.url }}" alt="User Avatar" class="profile-avatar">
+      {% else %}
+        <img src="{% static 'img/user-avatar.png' %}" alt="User Avatar" class="profile-avatar">
+      {% endif %}
+
+      <div class="username px-2">
+        <h3>{{ user.username }}</h3> 
+      </div>
+
+      
+    </div>
+    <div class="position-relative">
+      <i class="fa-solid fa-bell text-danger"></i>
+      <!-- <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">99+</span> -->
+    </div>
+  </div>
+
+  <div class="balance-card text-white">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <p class="mb-1">Available Balance <i class="fa-solid fa-eye ms-2" id="toggleBalance" style="cursor:pointer;"></i></p>
+        <h3 id="balance">₦{{ account.balance|floatformat:2 }}</h3>
+      </div>
+      <div class="btn btn-sm text-white" style="background-color: #5732C6;" data-bs-toggle="modal" data-bs-target="#accountModal">Add Money</div>
+    </div>
+    <small>Storm-Proof Earnings! Lock in 20% p.a.</small>
+  </div>
+
+
+
+<!-- Modal Structure -->
+<div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header text-white" style="background-color: #1E266D; color: #5732C6;">
+        <h5 class="modal-title" id="accountModalLabel">Account Information</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center"  style="color: #5732C6;">
+        <p><strong>Name:</strong> AUGUSTINE</p>
+        <p><strong>Account Number:</strong> 1234567890</p>
+        <p><strong>Bank Name:</strong> Dauxen Bank</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  <div class="card-section">
+    <h6>Money Transfer</h6>
+    <div class="d-flex justify-content-around text-center mb-3">
+      <div>
+        <div class="service-icon"><i class="fa-solid fa-building-columns"></i></div>
+        <small>To Bank</small>
+      </div>
+      <div>
+        <div class="service-icon"><i class="fa-solid fa-right-left"></i></div>
+        <small>To Dauxen</small>
+      </div>
+      <div>
+        <div class="service-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+        <small>Withdraw</small>
+      </div>
+    </div>
+    <hr>
+    <h6 class="mt-4">Recent Transfers</h6>
+  <ul class="list-group">
+  {% for tx in transactions %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>₦{{ tx.amount|floatformat:2 }}</strong><br>
+        <small>
+          {% if tx.sender.account_number == account.account_number %}
+            Sent to {{ tx.receiver.account_number }}
+          {% else %}
+            Received from {{ tx.sender.account_number }}
+          {% endif %}
+        </small><br>
+        <small class="text-muted">{{ tx.timestamp|date:"M d, Y • H:i" }}</small>
+      </div>
+      <span class="badge bg-success">Success</span>
+    </li>
+  {% empty %}
+    <li class="list-group-item">No transactions yet.</li>
+  {% endfor %}
+</ul>
+
+  </div>
+
+  <div class="card-section">
+    <h6>Services</h6>
+    <div class="row text-center g-3">
+      <div class="col-3"><div class="service-icon"><i class="fa-solid fa-phone"></i></div><small>Airtime</small></div>
+      <div class="col-3"><div class="service-icon"><i class="fa-solid fa-signal"></i></div><small>Data</small></div>
+      <div class="col-3"><div class="service-icon"><i class="fa-solid fa-futbol"></i></div><small>Betting</small></div>
+      <div class="col-3"><div class="service-icon"><i class="fa-solid fa-bolt"></i></div><small>Electricity</small></div>
+      <div class="col-3"><div class="service-icon"><i class="fa-solid fa-tv"></i></div><small>TV</small></div>
+      <div class="col-3"><div class="service-icon"><i class="fa-solid fa-gift"></i></div><small>Refer & Earn</small></div>
+      <div class="col-3"><div class="service-icon"><i class="fa-solid fa-credit-card"></i></div><small>ATM Card</small></div>
+      <div class="col-3"><div class="service-icon"><i class="fa-solid fa-briefcase"></i></div><small>CashBox</small></div>
+    </div>
+  </div>
+
+  <div id="promoCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex bg-light text-dark p-3 align-items-center justify-content-between rounded">
+          <div>
+            <h6>FREE ATM Card</h6>
+            <p class="small mb-2">Free ATM withdrawals<br>No maintenance fee</p>
+            <button class="btn btn-warning btn-sm">Apply Now</button>
+          </div>
+          <img src="https://placehold.co/100x100?text=ATM" class="img-fluid" alt="ATM"/>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex bg-light text-dark p-3 align-items-center justify-content-between rounded">
+          <div>
+            <h6>Earn 20% p.a</h6>
+            <p class="small mb-2">Lock in your earnings today!</p>
+            <button class="btn btn-primary btn-sm">Get Started</button>
+          </div>
+          <img src="https://placehold.co/100x100?text=Earnings" class="img-fluid" alt="Earnings"/>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="1"></button>
+    </div>
+  </div>
+
+
+</div>
+
+<div style="height: 100px;"></div>
+
+
+<div class="nav-bottom">
+  <a href="#"><i class="fa-solid fa-house"></i><br>Home</a>
+  <a href="#"><i class="fa-solid fa-hand-holding-usd"></i><br>Loan</a>
+  <a href="#"><i class="fa-solid fa-chart-line"></i><br>Wealth</a>
+  <a href="#"><i class="fa-solid fa-gift"></i><br>Reward</a>
+  <a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i><br>Me</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+
+</body>
+</html>
