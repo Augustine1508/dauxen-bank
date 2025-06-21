@@ -260,11 +260,13 @@ with open(os.path.join(BASE_DIR, "client_secret.json")) as f:
     google_creds = json.load(f)
 
 
+from decouple import config
+
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "APP": {
-            "client_id": google_creds["web"]["client_id"],
-            "secret": google_creds["web"]["client_secret"],
+            "client_id": config("GOOGLE_CLIENT_ID"),
+            "secret": config("GOOGLE_CLIENT_SECRET"),
             "key": "",
         }
     }
