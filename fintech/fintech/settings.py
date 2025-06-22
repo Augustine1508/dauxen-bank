@@ -256,21 +256,15 @@ SITE_ID = 1
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
+import json
 with open(os.path.join(BASE_DIR, "client_secret.json")) as f:
     google_creds = json.load(f)
 
 
-from decouple import config
+GOOGLE_CLIENT_ID = google_creds["web"]["client_id"]
+GOOGLE_CLIENT_SECRET = google_creds["web"]["client_secret"]
 
-SOCIALACCOUNT_PROVIDERS = {
-    "google": {
-        "APP": {
-            "client_id": config("GOOGLE_CLIENT_ID"),
-            "secret": config("GOOGLE_CLIENT_SECRET"),
-            "key": "",
-        }
-    }
-}
 
 
 
