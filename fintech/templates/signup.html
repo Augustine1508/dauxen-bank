@@ -150,10 +150,10 @@
                                             <a href="javascript:void(0)"><img src="{% static 'img/google.png' %}" alt="image"></a>
                                             <a href="javascript:void(0)"><img src="{% static 'img/fb.png' %}" alt="image"></a>
                                         
-                                            <a href="{% provider_login_url 'google' process='redirect' %}">
+                                            {% comment %} <a href="{% provider_login_url 'google' process='redirect' %}">
                                                 <img src="{% static 'img/google.png' %}" alt="Sign in with Google">
                                                 Sign in with Google
-                                            </a>
+                                            </a> {% endcomment %}
                                         </div>
                                     </div>
                                     <div class="privacy">
@@ -230,7 +230,7 @@
                                             </button>
                                         </div>
                                     </form>
-                                    <div class="bottom-area">
+                                    {% comment %} <div class="bottom-area">
                                         <div class="continue"><p>Or continue with</p></div>
                                         <div class="login-with d-flex align-items-center">
                                             <a href="{% provider_login_url 'google' %}">
@@ -238,10 +238,11 @@
                                             </a>
                                             <a href="javascript:void(0)"><img src="{% static 'img/fb.png' %}" alt="image"></a>
                                         </div>
-                                    </div>
+                                    </div> {% endcomment %}
                                     <div class="privacy">
                                         <p>By registering you accept our <a href="terms-conditions.html">Terms & Conditions</a> and <a href="privacy-policy.html">Privacy Policy</a></p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
